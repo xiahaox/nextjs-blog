@@ -3,16 +3,16 @@ const withPlugins = require('next-compose-plugins');
 // const withCss = require('@zeit/next-css');
 // const withLess = require('@zeit/next-less');
 const withAntdLess = require('next-plugin-antd-less');
-const withLess = require("next-with-less");
-const path = require('path')
+const withLess = require('next-with-less');
+const path = require('path');
 if (typeof require !== 'undefined') {
   // eslint-disable-next-line
   //console.log("require",require);
-  require.extensions['.css', '.less'] = (file) => { }
+  require.extensions[('.css', '.less')] = (file) => {};
 }
 const nextConfig = {
   reactStrictMode: true,
-}
+};
 // module.exports = withLess(
 //   {
 //     lessLoaderOptions: {
@@ -40,6 +40,7 @@ module.exports = withPlugins(
     //   {
     //     cssModules: true,
     //     cssLoaderOptions: {
+    
     //       sourceMap: false,
     //       importLoaders: 1,
     //     },

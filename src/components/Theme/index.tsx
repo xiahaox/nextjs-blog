@@ -24,10 +24,9 @@ export const Theme = () => {
     } else {
       document.body.classList.remove('dark');
     }
-    window.localStorage.setItem('dark', dark ? '1' : '-1');
   }, [mounted, dark]);
   const handleTheme = () => {
-    toggleDark(true)
+    toggleDark(!dark)
   }
 
   return (

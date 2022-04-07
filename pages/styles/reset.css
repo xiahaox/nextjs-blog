@@ -1,4 +1,4 @@
-:global body {
+ body {
     --primary-color: #ff0064;
     --sun-color: #eec413;
     --link-color: #4299e1;
@@ -21,11 +21,11 @@
     --global-bg-opacoty: 0.75;
 }
 
-:global body img {
+ body img {
     opacity: 1;
 }
 
-:global body.dark {
+ body.dark {
     --sun-color: #e684af;
     --bg: #282c35;
     --bg-second: #363c48;
@@ -45,43 +45,43 @@
     --global-bg-opacoty: 0.25;
 }
 
-:global body.dark img {
+body.dark img {
     opacity: 0.75;
     transition: opacity 0.5s ease-in-out;
 }
 
-:global * {
+ * {
     transition: background-color 0.2s ease-in-out, margin 0.2s ease-in-out, opacity 0.2s ease-in-out, filter 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
-:global ::-webkit-scrollbar-track {
+ ::-webkit-scrollbar-track {
     border-radius: 0;
     background: transparent;
 }
 
-:global ::-webkit-scrollbar-thumb {
+ ::-webkit-scrollbar-thumb {
     border-radius: 0;
     border-radius: 0.5rem;
     background-color: transparent;
     transition: all 0.2s;
 }
 
-:global *:hover::-webkit-scrollbar-thumb {
+*:hover::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar-bg);
 }
 
-:global ::-webkit-scrollbar {
+ ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
     background: transparent;
 }
 
-:global html {
+ html {
     text-size-adjust: 100% !important;
     touch-action: manipulation;
 }
 
-:global body {
+ body {
     color: var(--main-text-color);
     background-color: var(--bg);
     overflow-x: hidden;
@@ -90,7 +90,7 @@
 }
 
 @media (max-width: 768px) {
-    :global body {
+ body {
         width: 100% !important;
         padding-bottom: constant(safe-area-inset-bottom);
         /*兼容 IOS<11.2*/
@@ -99,31 +99,31 @@
     }
 }
 
-:global ul {
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-:global p {
+ p {
     list-style: none;
     margin: 0;
 }
 
-:global a {
+ a {
     color: inherit;
 }
 
-:global a:hover {
+ a:hover {
     color: inherit;
 }
 
-:global img {
+img {
     max-width: 100%;
     height: auto;
 }
 
-:global iframe {
+iframe {
     display: block;
     width: 100%;
     height: 450px;
@@ -133,13 +133,13 @@
     margin: 1rem 0;
 }
 
-:global .container {
+.container {
     margin-right: auto;
     margin-left: auto;
 }
 
 @media (max-width: 768px) {
-    :global .container {
+    .container {
         width: 100%;
         padding-right: 15px;
         padding-left: 15px;
@@ -147,35 +147,35 @@
 }
 
 @media (min-width: 768px) {
-    :global .container {
+ .container {
         width: 768px;
     }
 }
 
 @media (min-width: 992px) {
-    :global .container {
+  .container {
         width: 960px;
     }
 }
 
 @media (min-width: 1200px) {
-    :global .container {
+    .container {
         width: 1140px;
     }
 }
 
-:global .sticky {
+.sticky {
     position: sticky;
     top: 1rem;
     margin-bottom: 1rem;
 }
 
-:global .loading {
+.loading {
     padding: 2rem 0 1rem;
     text-align: center;
 }
 
-:global .empty {
+ .empty {
     width: 100%;
     height: 60px;
     color: var(--second-text-color);
@@ -184,6 +184,6 @@
     text-align: center;
 }
 
-:global .ant-back-top {
+.ant-back-top {
     bottom: 60px !important;
 }

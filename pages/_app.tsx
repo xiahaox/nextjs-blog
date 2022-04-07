@@ -4,10 +4,10 @@ import Router from 'next/router'
 import { AppLayout } from '../src/components/layout/AppLayout';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
-import '@/theme/antd.less';
-import '@/theme/reset.css';
-import '../src/theme/antd.less'
-import '../src/theme/reset.css'
+import './styles/antd.css'
+import './styles/reset.css'
+import './styles/var.css'
+
 
 function MyApp({ Component, pageProps }) {
   const { ca, tags, sysinfo } = { ca: [], tags: [], sysinfo: [] };

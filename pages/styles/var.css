@@ -1,4 +1,4 @@
-:global body {
+ body {
   --primary-color: #ff0064;
   --sun-color: #eec413;
   --link-color: #4299e1;
@@ -20,10 +20,10 @@
   --comment-editor-disable-bg: #f5f5f5;
   --global-bg-opacoty: 0.75;
 }
-:global body img {
+ body img {
   opacity: 1;
 }
-:global body.dark {
+ body.dark {
   --sun-color: #e684af;
   --bg: #282c35;
   --bg-second: #363c48;
@@ -42,7 +42,7 @@
   --comment-editor-disable-bg: var(--border-color);
   --global-bg-opacoty: 0.25;
 }
-:global body.dark img {
+ body.dark img {
   opacity: 0.75;
   transition: opacity 0.5s ease-in-out;
 }
