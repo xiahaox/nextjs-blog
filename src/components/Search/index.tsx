@@ -28,8 +28,6 @@ export const Search: React.FC<IProps> = ({ visible, onClose }) => {
     // searchArticles(keyword).then((res) => {
     //   setArticles(res.filter((t) => t.status === 'publish'));
     // });
-    console.log(httpProvider({ url: '/api/search', method: 'get' }));
-
     httpProvider({ url: '/api/search', method: 'get' }).then((res) => {
       console.log(res);
       setArticles(res);
