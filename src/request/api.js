@@ -4,7 +4,7 @@ import httpProvider from './index'
 
 export function getArticles_all(parmas) {
     return httpProvider({
-        url: '/article/category/all',
+        url: '/api/article/category/all',
         method: 'get',
         params: parmas,
     });
@@ -12,7 +12,7 @@ export function getArticles_all(parmas) {
 
 export function getRecommend(params) {
     return httpProvider({
-        url: '/article/recommend',
+        url: '/api/article/recommend',
         method: 'get',
         params: params,
     })
@@ -20,7 +20,7 @@ export function getRecommend(params) {
 
 export function searchArticle(params) {
     return httpProvider({
-        url: '/search/article',
+        url: '/api/search/article',
         method: 'get',
         params
     })
