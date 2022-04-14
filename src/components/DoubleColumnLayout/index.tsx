@@ -43,17 +43,17 @@ export const DoubleColumnLayout: React.FC<IProps> = ({
             >
               {likesProps && (
                 <div className={style.widgetWrapper}>
-                  <Likes {...likesProps} />
+                  {/* <Likes {...likesProps} /> */}
                 </div>
               )}
               {showComment && (
                 <div className={style.widgetWrapper}>
-                  <CommentIcon />
+                  {/* <CommentIcon /> */}
                 </div>
               )}
               {shareProps && (
                 <div className={style.widgetWrapper}>
-                  <Share {...shareProps} />
+                  {/* <Share {...shareProps} /> */}
                 </div>
               )}
             </div>

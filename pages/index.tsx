@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { DoubleColumnLayout } from '@/components/DoubleColumnLayout';
 import style from './index.module.less';
 import { ArticleCarousel } from '@/components/ArticleCarousel';
-import httpProvider from '@/request';
+import { getArticles_all, getRecommend } from '@/request/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -33,9 +33,9 @@ export const CategoryMenu = ({ categories }) => {
           {...(index === 0
             ? { href: '/' }
             : {
-                href: '/category/[category]',
-                as: `/category/` + category.value,
-              })}
+              href: '/category/[category]',
+              as: `/category/` + category.value,
+            })}
           shallow={false}
         >
           <a
@@ -67,14 +67,10 @@ export default function Home({
   const [articles, setArticles] = useState(defaultArticles);
   const pageSize = 2;
   const getArticles = async (page) => {
-    const data = await httpProvider({
-      url: '/api/article',
-      method: 'get',
-      params: { page, pageSize, status: 'publish' },
-    });
+    const data = await getArticles_all({ page, pageSize, status: 'publish' });
     setPage(page);
     setArticles(() => {
-      return [...articles, ...data[0]];
+      return [...articles, ...data.data[0]];
     });
   };
 
@@ -116,18 +112,11 @@ export default function Home({
 // 服务端预取数据
 
 Home.getInitialProps = async () => {
-  const [recommendedArticles, articles] = await Promise.all([
-    httpProvider({
-      url: '/api/recommend',
-      method: 'get',
-    }).catch(() => []),
-    httpProvider({
-      url: '/api/article',
-      method: 'get',
-      params: { page: 1, pageSize: 2, status: 'publish' },
-    }),
+  let [recommendedArticles, articles] = await Promise.all([
+    getRecommend(), getArticles_all({ page: 1, pageSize: 2, status: 'publish' })
   ]);
-
+  recommendedArticles = recommendedArticles.data;
+  articles = articles.data;
   return {
     articles: articles[0],
     total: articles[1],

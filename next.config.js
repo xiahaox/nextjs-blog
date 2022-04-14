@@ -8,10 +8,14 @@ const path = require('path');
 if (typeof require !== 'undefined') {
   // eslint-disable-next-line
   //console.log("require",require);
-  require.extensions[('.css', '.less')] = (file) => {};
+  require.extensions[('.css', '.less')] = (file) => { };
 }
+console.log("---------------next.config.js-------------process.env.NODE_ENV", process.env.NODE_ENV);
 const nextConfig = {
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 // module.exports = withLess(
 //   {
@@ -24,7 +28,6 @@ const nextConfig = {
 //     distDir: 'build'
 //   }
 // )
-
 module.exports = withPlugins(
   [
     [withLess],
@@ -40,7 +43,7 @@ module.exports = withPlugins(
     //   {
     //     cssModules: true,
     //     cssLoaderOptions: {
-    
+
     //       sourceMap: false,
     //       importLoaders: 1,
     //     },

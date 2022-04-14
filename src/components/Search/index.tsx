@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { ListTrail } from '@/components/Animation/ListTrail';
 import 'antd/dist/antd.css';
 const { Search: AntdSearch } = Input;
-import httpProvider from '@/request';
+import { searchArticle } from '@/request/api';
 
 interface IProps {
   tags: [];
@@ -28,10 +28,10 @@ export const Search: React.FC<IProps> = ({ visible, onClose }) => {
     // searchArticles(keyword).then((res) => {
     //   setArticles(res.filter((t) => t.status === 'publish'));
     // });
-    httpProvider({ url: '/api/search', method: 'get' }).then((res) => {
-      console.log(res);
-      setArticles(res);
-    });
+
+    searchArticle().then(res => {
+      setArticles(res.data);
+    })
   };
   const close = useCallback(() => {
     setArticles([]);

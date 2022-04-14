@@ -6,6 +6,7 @@ import LocaleTime from '@/components/ArticleCarousel/LocaleTime';
 import LazyLoad from 'react-lazyload';
 import EyeOutlined from '@ant-design/icons';
 import HeartOutlined from '@ant-design/icons';
+import Image from 'next/image'
 import ShareAltOutlined from '@ant-design/icons';
 
 interface IProps {
@@ -77,7 +78,7 @@ export const ArticleList: React.FC<IProps> = ({ articles = [] }) => {
                     {article.cover && (
                       <LazyLoad height={120}>
                         <div className={style.coverWrapper}>
-                          <img src={article.cover} alt="cover" />
+                          {/* <Image src={article.cover} alt="cover" layout='fill' /> */}
                         </div>
                       </LazyLoad>
                     )}

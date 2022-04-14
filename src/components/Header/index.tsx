@@ -6,6 +6,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Theme } from '@/components/Theme';
 import style from './index.module.less';
 import { Search } from '@/components/Search';
+import Image from 'next/link';
 
 const NAV_LINKS = [
   {
@@ -122,7 +123,7 @@ export const Header = ({ setting, tags, pages, hasBg = false }) => {
             {/^http/.test(setting.systemLogo) ? (
               <Link href="/" scroll={false}>
                 <a aria-label="home">
-                  <img height="36" src={setting.systemLogo} alt="logo" />
+                  {/* <Image height="36" src={setting.systemLogo} alt="logo" /> */}
                 </a>
               </Link>
             ) : (
