@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "pm2:start": "pm2 start next start",
+    "pm2:dev": "pm2 start npm  run  --name client -- start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -25,6 +25,8 @@
     "next-intl": "^2.5.0",
     "next-plugin-antd-less": "^1.8.0",
     "next-with-less": "^2.0.5",
+    "pm2": "^5.2.0",
+    "pm2-windows-startup": "^1.0.3",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-infinite-scroll-component": "^6.1.0",
