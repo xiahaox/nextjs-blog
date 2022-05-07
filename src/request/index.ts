@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { message } from 'antd';
 console.log("-----axios", process.env.NODE_ENV);
+console.log("-----axios", process.env.NEXT_API_URL);
 
 const httpProvider = axios.create({
   // baseURL: "http://localhost:3000/",
-  baseURL: "http://localhost:4000/",
+  // baseURL: "http://localhost:4000/",
   // baseURL: "/",
+  baseURL:  process.env.NEXT_API_URL,
   timeout: 60000,
   // withCredentials: true,
 });

@@ -27,30 +27,34 @@ export const CategoryMenu = ({ categories }) => {
           path: '/',
         },
         ...categories,
-      ].map((category, index) => (
-        <Link
-          key={index}
-          {...(index === 0
-            ? { href: '/' }
-            : {
-              href: '/category/[category]',
-              as: `/category/` + category.value,
-            })}
-          shallow={false}
-        >
-          <a
-            className={cls({
-              [style.active]:
-                index === 0
-                  ? asPath === category.path
-                  : asPath.replace('/category/', '') === category.value,
-            })}
-            aria-label={category.label}
+      ].map((category, index) => {
+        console.log(category, index);
+
+        return (
+          <Link
+            key={index}
+            {...(index === 0
+              ? { href: '/' }
+              : {
+                  href: '/category/[category]',
+                  as: `/category/` + category.value,
+                })}
+            shallow={false}
           >
-            <span>{category.label}</span>
-          </a>
-        </Link>
-      ))}
+            <a
+              className={cls({
+                [style.active]:
+                  index === 0
+                    ? asPath === category.path
+                    : asPath.replace('/category/', '') === category.value,
+              })}
+              aria-label={category.label}
+            >
+              <span>{category.label}</span>
+            </a>
+          </Link>
+        );
+      })}
     </>
   );
 };
@@ -63,6 +67,7 @@ export default function Home({
 }) {
   const { state, dispatch } = useContext(myContext);
   const { setting, tags, categories } = state;
+
   const [page, setPage] = useState(1);
   const [articles, setArticles] = useState(defaultArticles);
   const pageSize = 2;
@@ -113,7 +118,8 @@ export default function Home({
 
 Home.getInitialProps = async () => {
   let [recommendedArticles, articles] = await Promise.all([
-    getRecommend(), getArticles_all({ page: 1, pageSize: 2, status: 'publish' })
+    getRecommend(),
+    getArticles_all({ page: 1, pageSize: 2, status: 'publish' }),
   ]);
   recommendedArticles = recommendedArticles.data;
   articles = articles.data;

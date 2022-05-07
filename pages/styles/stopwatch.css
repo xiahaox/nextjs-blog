@@ -1,0 +1,652 @@
+    #challenge {
+        font-family: 'Roboto';
+    }
+    /* banner */
+    .challenge-impot {
+        text-align: center;
+        position: relative;
+        width: 100%;
+        height: 800px;
+        background: #ffd186;
+        overflow: hidden;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -o-user-select:none;
+        user-select:none;
+    }
+    #confetti {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+    .challenge-start {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+        margin-top: 20px;
+        font-weight: 900;
+        font-size: 80px;
+        line-height: 94px;
+        background: linear-gradient(90deg, #61C2FF 22.02%, #0080CF 103.37%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        z-index: 2;
+    }
+    .clockbutton {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+        margin-top: 618px;
+        width: 272px;
+        height: 52px;
+        line-height: 52px;
+        background: #026FD1;
+        border-radius: 40px;
+        font-weight: 900;
+        font-size: 28px;
+        color: #FFFFFF;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .clockdetail {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+        margin-top: 716px;
+        max-width: 872px;
+        min-width: 700px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 23px;
+        text-align: center;
+        color: #1B1C1E;
+        z-index: 2;
+    }
+    /* clock */
+    .clockimgbox {
+        position: absolute;
+        left: 52%;
+        bottom: 0;
+        transform: translate(-52%, 0);
+        z-index: 1;
+    }
+    .clockimg  {
+        min-width: 583px;
+    }
+    .clocknormal {
+        display: block;
+    }
+    .clockdown {
+        display: none;
+    }
+    .clockup {
+        display: none;
+    }
+    .clockarrow {
+        place-self: center;
+        position: absolute;
+        top: 178px;
+        left: 90px;
+        width: 350px;
+        height: 350px;
+    }
+    .clockcount {
+        position: absolute;
+        top: 296px;
+        left: 212px;
+        font-weight: 900;
+        font-size: 48px;
+        color: #B8442D;
+    }
+    .timer {
+        transform-origin: 16.5% 84%;
+        transform-box: fill-box;
+        transform: rotate(-45deg);
+    }
+/* clockmb */
+    .clockimgboxmb {
+        display: none;
+        z-index: 1;
+    }
+    #path-13 {
+        stroke: #ffad01
+    }
+/* title */
+    .challenge-title {
+        margin-top: 128px;
+        text-align: center;
+    }
+    .challenge-titleone {
+        font-size: 18px;
+        line-height: 18px;
+        letter-spacing: 12px;
+        color: #026FD1;
+    }
+    .challenge-titletwo {
+        margin: 60px auto 86px;
+        font-weight: 900;
+        font-size: 62px;
+        line-height: 18px;
+        text-transform: uppercase;
+        color: #08307F;
+    }
+    /* box */
+    .challenge-box {
+        position: relative;
+        overflow: hidden;
+    }
+    .balloonimg {
+        position: absolute;
+        width: 12vw;
+    }
+    .balloon1 {
+         left: 0;
+         top: 160px;
+    }
+    .balloon2 {
+        right: 0;
+        top: 690px;
+    }
+    .balloon3 {
+        left: 0;
+        bottom: 0;
+    }
+    .balloon2mb {
+        display: none;
+    }
+    .balloon3mb {
+        display: none;
+    }
+/* main */
+    .challenge-reward {
+        display: flex;
+        justify-content: space-around;
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+    .challenge-rewarditem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 24px;
+    }
+    .rewarditem-title {
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 30px;
+        color: #1B1C1E;
+        margin: 0;
+    }
+    .rewarditem-detail {
+        margin: 18px auto 20px;
+        font-size: 18px;
+        line-height: 21px;
+        height: 42px;
+        color: #666666;
+        max-width: 184px;
+        text-align: center;
+    }
+    .rewarditem-person {
+        margin-top: 21px;
+        font-size: 18px;
+    }
+    .rewarditem-person span {
+        margin-left: 8px;
+    }
+/* --- */
+    .challenge-navigation {
+        max-width: 1280px;
+        margin: 0 auto;
+        position: relative;
+        padding:0 30px 196px;
+    }
+    .navigation-img {
+        width: 100%;
+        height: auto;
+    }
+    .navigationpc {
+        display: block;
+    }
+    .navigationmb {
+        display: none;
+    }
+    /* blog */
+    .challenge-mask {
+        width: 100%;
+        height: 1200px;
+        background: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        display: none;
+    }
+    .challenge-blog {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 860px;
+        height: auto;
+        background: #fff;
+        padding: 88px 120px 120px;
+        font-family: 'Inter';
+        border-radius: 4px;
+    }
+    .challenge-close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+    .challenge-balloonfirst {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 144px;
+    }
+    .challenge-balloonone {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 228px;
+    }
+    .challenge-balloontwo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 110px;
+    }
+    .challenge-blogtitle {
+        margin: 0;
+        font-size: 36px;
+        line-height: 44px;
+        color: #1B1C1E;
+    }
+    .challenge-blogtitle2 {
+        font-size: 18px;
+        line-height: 22px;
+        color: #333333;
+        margin-top: 20px;
+    }
+    .challenge-inputbox {
+        margin-top: 40px;
+    }
+    .challenge-blog .challenge-inputbox .challenge-input {
+        border-radius: 4px;
+        width: 480px;
+        border: 1px solid #CCCCCC;
+        color: #0584D2;
+    }
+    .challenge-blog .challenge-inputbox .challenge-input::placeholder {
+        font-style: normal;
+        font-family: 'Inter' !important;
+        color: #0584D2 !important;
+        font-size: 14px !important;
+    }
+    .challenge-checkbox {
+        margin-top: 20px;
+        display: flex;
+    }
+    .challenge-checkboxspan {
+        margin-left: 8px;
+        width: 426px;
+        font-size: 14px;
+        color: #999999;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .challenge-checkboxspan a {
+        text-decoration:underline !important;
+    }
+    .challenge-blogclock {
+        display: none;
+        align-items: center;
+        color: #666;
+        margin: 28px 0 8px;
+    }
+    .blogclock-detial {
+        margin-left: 8px;
+    }
+    .blogclock-top {
+        font-size: 32px;
+        line-height: 39px;
+    }
+    .blogclock-top span{
+        margin-right: 8px;
+        color: #0584D2;
+    }
+    .blogclock-bottom {
+        font-size: 18px;
+        line-height: 22px;
+        color: #666;
+    }
+    .challenge-subform {
+        width: 146px;
+        height: 43px;
+        line-height: 43px;
+        background: #0584D2;
+        text-align: center;
+        font-size: 16px;
+        color: #FFFFFF;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 80px;
+    }
+    .challenge-blogdetail {
+        width: 564px;
+        font-size: 22px;
+        line-height: 27px;
+        color: #666666;
+        margin: 0 auto 32px;
+    }
+    .blogtitleone {
+        margin-bottom: 112px;
+        text-align: center;
+    }
+    .blogtitleone img {
+        vertical-align: bottom;
+    }
+    .blogdetailtwo {
+        width: auto;
+    }
+    .blogsectwo {
+        text-align: center;
+    }
+    .blogdetailtwo img{
+        width: 52px;
+        margin-left: 24px;
+    }
+    .blogsectwo-card {
+        position: relative;
+        text-align: center;
+        margin: 80px auto 58px;
+    }
+    .blogsectwo-card span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 32px;
+        letter-spacing: -0.02em;
+        color: #FFFFFF;
+    }
+    .balloononenext {
+        display: none;
+    }
+    .navigationspan {
+        position: absolute;
+        font-size: 1.4vw;
+        width: max-content;
+        line-height: 30px;
+        color: #1B1C1E;
+        text-align: center;
+        margin-top: 28px;
+        font-weight: bold;
+    }
+    .navigationone {
+        left: 7%;
+    }
+    .navigationtwo {
+        left: 32%;
+    }
+    .navigationthree {
+        left: 56%;
+    }
+    .navigationfour {
+        left: 78%;
+    }
+    @media screen and (max-width: 900px) {
+        .challenge-blog {
+            width: 342px;
+            padding: 60px 16px 48px;
+        }
+        .challenge-close {
+            width: 20px;
+        }
+        .challenge-balloonfirst {
+            width: 72px;
+        }
+        .challenge-balloonone {
+            display: none;
+        }
+        .challenge-balloontwo {
+            width: 48px;
+        }
+        .challenge-blogtitle {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        .challenge-blogtitle2 {
+            font-size: 14px;
+            line-height: 17px;
+            margin-top: 8px;
+            width: 271px;
+        }
+        .challenge-inputbox {
+            margin-top: 28px;
+        }
+        .challenge-blog .challenge-inputbox .challenge-input {
+            width: 312px;
+        }
+        .challenge-blog .challenge-inputbox .challenge-input::placeholder {
+        }
+        .balloononenext {
+            display: block;
+        }
+        .challenge-checkboxspan {
+            width: 296px;
+        }
+        .challenge-blogclock {
+            margin: 16px 0;
+        }
+        .blogclock-img {
+            width: 95px;
+        }
+        .blogclock-top {
+            font-size: 16px;
+            line-height: 19px;
+        }
+        .blogclock-bottom {
+            font-size: 14px;
+            line-height: 17px;
+        }
+        .challenge-subform {
+            margin-top: 28px;
+            width: 105px;
+            height: 33px;
+            line-height: 33px;
+        }
+        .challenge-blogdetail {
+            font-size: 14px;
+            line-height: 20px;
+            margin: 0 auto;
+            width: auto;
+        }
+        .challenge-blogdetail:last-child {
+            margin-top: 12px;
+        }
+        .blogtitleone {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+        .blogtitleone img {
+            width: 48px;
+        }
+        .blogdetailtwo img{
+            width: 20px;
+            margin-left: 6px;
+        }
+        .blogsectwo-card {
+            width: 128px;
+            margin: 28px auto;
+        }
+        .blogsectwo-card span {
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        /* banner */
+        .challenge-impot {
+            height: 474px;
+        }
+        .challenge-start {
+            margin-top: 40px;
+            font-size: 32px;
+            line-height: 38px;
+        }
+        .clockbutton {
+            margin-top: 341px;
+            width: 178px;
+            height: 36px;
+            line-height: 36px;
+            font-size: 16px;
+        }
+        .clockdetail {
+            margin-top: 395px;
+            font-size: 14px;
+            min-width: 342px;
+        }
+        /* clock */
+        .clockimgbox {
+            display: none;
+        }
+        .clockimgboxmb {
+            display: block;
+            position: absolute;
+            left: 52%;
+            bottom: 0;
+            transform: translate(-52%, 0);
+        }
+        .clockimgmb  {
+            min-width: 240px;
+        }
+        .clocknormalmb {
+            display: block;
+        }
+        .clockdownmb {
+            display: none;
+        }
+        .clockupmb {
+            display: none;
+        }
+        .clockarrowmb {
+            place-self: center;
+            position: absolute;
+            top: 76px;
+            left: 38px;
+            width: 140px;
+            height: 140px;
+        }
+        .clockcountmb {
+            position: absolute;
+            top: 119px;
+            left: 79px;
+            font-weight: 900;
+            font-size: 26px;
+            color: #B8442D;
+        }
+        .timermb {
+            transform-origin: 16.5% 84%;
+            transform-box: fill-box;
+            transform: rotate(-45deg);
+        }
+
+        /* second */
+        .challenge-title {
+            margin-top: 60px;
+        }
+        .challenge-titleone {
+            font-size: 12px;
+        }
+        .challenge-titletwo {
+            font-size: 28px;
+            margin: 24px auto 10px;
+        }
+        .challenge-reward {
+            flex-wrap: wrap;
+            justify-content: normal
+        }
+        .rewarditem-title {
+            font-size: 20px;
+        }
+        .rewarditem-detail {
+            font-size: 14px;
+            margin: 8px auto 12px;
+            width: 143px;
+            height: auto;
+        }
+        .challenge-rewarditem {
+            margin: 30px 0 0;
+            width: 50%;
+        }
+        .challenge-rewarditem img {
+            max-width: 158px;
+        }
+        .rewarditem-person {
+            font-size: 14px;
+        }
+        /* bottom */
+        .challenge-navigation {
+            max-width: 350px;
+            margin: 40px auto 0;
+            padding:0 16px 78px;
+        }
+        .navigationpc {
+            display: none;
+        }
+        .navigationmb {
+            display: block;
+        }
+        .balloon1 {
+            top: 14px;
+            width: 73px;
+        }
+        .balloon2 {
+            display: none;
+        }
+        .balloon3 {
+            display: none;
+        }
+        .balloon2mb {
+            display: block;
+            top: 480px;
+            right: 0;
+            width: auto;
+        }
+        .balloon3mb {
+            display: block;
+            top: 864px;
+            left: 0;
+            width: auto;
+        }
+        .navigationspan {
+            font-size: 14px;
+            line-height: normal;
+        }
+        .navigationone {
+            left: 13%;
+            top: 32%;
+        }
+        .navigationtwo {
+            left: 62%;
+            top: 32%;
+        }
+        .navigationthree {
+            left: 10%;
+            top: 78%;
+        }
+        .navigationfour {
+            left: 58%;
+            top: 78%;
+        }
+    }

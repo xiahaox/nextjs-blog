@@ -6,7 +6,7 @@ import LocaleTime from '@/components/ArticleCarousel/LocaleTime';
 import LazyLoad from 'react-lazyload';
 import EyeOutlined from '@ant-design/icons';
 import HeartOutlined from '@ant-design/icons';
-import Image from 'next/image'
+import Image from 'next/image';
 import ShareAltOutlined from '@ant-design/icons';
 
 interface IProps {
@@ -16,8 +16,6 @@ interface IProps {
 }
 
 export const ArticleList: React.FC<IProps> = ({ articles = [] }) => {
-  console.log(articles);
-
   return (
     <div className={style.wrapper}>
       {articles && articles.length ? (

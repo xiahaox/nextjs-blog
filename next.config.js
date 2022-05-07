@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const webpack = require('webpack');
 const withPlugins = require('next-compose-plugins');
 // const withCss = require('@zeit/next-css');
 // const withLess = require('@zeit/next-less');
@@ -6,17 +7,36 @@ const withAntdLess = require('next-plugin-antd-less');
 const withLess = require('next-with-less');
 const path = require('path');
 if (typeof require !== 'undefined') {
-  // eslint-disable-next-line
-  //console.log("require",require);
-  require.extensions[('.css', '.less')] = (file) => { };
+  require.extensions[('.css', '.less')] = (file) => {};
 }
-console.log("---------------next.config.js-------------process.env.NODE_ENV", process.env.NODE_ENV);
+console.log(
+  '---------------next.config.js-------------process.env.NEXT_API_URL',
+  process.env.NEXT_API_URL
+);
+console.log(
+  '---------------next.config.js-------------process.env.NODE_ENV',
+  process.env.NODE_ENV
+);
 const nextConfig = {
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true,
   },
+  // 配置环境变量--浏览器环境使用
+  env: {
+    NEXT_API_ENV: process.env.NEXT_API_ENV,
+    NEXT_API_URL: process.env.NEXT_API_URL,
+  },
+  webpack: (config, { dev, isServer }) => {
+    // config.plugins.push(
+    //   new webpack.DefinePlugin({
+    //     'process.env.NEXT_API_URL': JSON.stringify(process.env.NEXT_API_URL),
+    //   })
+    // );
+    return config;
+  },
 };
+
 // module.exports = withLess(
 //   {
 //     lessLoaderOptions: {

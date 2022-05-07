@@ -28,9 +28,9 @@ export const Search: React.FC<IProps> = ({ visible, onClose }) => {
     // searchArticles(keyword).then((res) => {
     //   setArticles(res.filter((t) => t.status === 'publish'));
     // });
-    searchArticle().then(res => {
+    searchArticle().then((res) => {
       setArticles(res.data);
-    })
+    });
   };
   const close = useCallback(() => {
     setArticles([]);

@@ -8,9 +8,10 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import './styles/antd.css';
 import './styles/reset.css';
 import './styles/var.css';
-console.log("----------------------------process.env.NODE_ENV", process.env.NODE_ENV);
+import './styles/stopwatch.css';
 function MyApp({ Component, pageProps }) {
   const { ca, tags, sysinfo } = { ca: [], tags: [], sysinfo: [] };
+
   return (
     <>
       <ContextProvider>
@@ -21,7 +22,7 @@ function MyApp({ Component, pageProps }) {
               ca={ca ? ca : []}
               tags={tags ? tags : []}
               sysinfo={sysinfo[0] || {}}
-            // router={props.router}
+              // router={props.router}
             />
           </AppLayout>
         </ConfigProvider>
