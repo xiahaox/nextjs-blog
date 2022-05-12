@@ -17,7 +17,7 @@ export const AppLayout: React.FC = ({ children }) => {
       <Header setting={setting} tags={tags} pages={pages} hasBg={customBg} />
       <main
         className={styles.main}
-        style={{ backgroundColor: true ? 'transparent' : 'var(--bg-body)' }}
+        style={{ backgroundColor: true ? '#e7eaee' : 'var(--bg-body)' }}
       >
         {children}
       </main>

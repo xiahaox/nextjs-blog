@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { ArticleList } from '@/components/ArticleList';
+import { ArticleRecommend } from '@/components/ArticleRecommend';
 
 export const CategoryMenu = ({ categories }) => {
   const router = useRouter();
@@ -66,6 +67,7 @@ export default function Home({
   // total = 0,
 }) {
   const { state, dispatch } = useContext(myContext);
+
   const { setting, tags, categories } = state;
 
   const [page, setPage] = useState(1);
@@ -109,7 +111,13 @@ export default function Home({
             </div>
           </>
         }
-        rightNode={''}
+        rightNode={
+          <div className="sticky">
+            <ArticleRecommend mode="inline" articles={recommendedArticles} />
+            {/* <Tags tags={tags} /> */}
+            {/* <Footer className={style.footer} setting={setting} /> */}
+          </div>
+        }
       ></DoubleColumnLayout>
     </div>
   );

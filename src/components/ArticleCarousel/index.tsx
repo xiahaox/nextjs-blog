@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel } from 'antd';
 import Link from 'next/link';
 import style from './index.module.less';
-import LocaleTime from './LocaleTime';
+import { LocaleTime_1 } from '@/components/LocaleTime';
 interface IProps {
   articles: [];
 }
@@ -31,7 +31,7 @@ export const ArticleCarousel: React.FC<any> = ({ articles = [] }) => {
                         <h2 className={style.title}>{article.title}</h2>
                         <p>
                           <span>
-                            <LocaleTime
+                            <LocaleTime_1
                               date={article.publishAt}
                               timeago={true}
                             />

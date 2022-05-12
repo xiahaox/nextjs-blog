@@ -25,3 +25,33 @@ export function searchArticle(params) {
     params,
   });
 }
+
+export function getArchives(params) {
+  return httpProvider({
+    url: !isMock ? '/api/article/archives' : '/api/archives',
+    method: 'get',
+    params,
+  });
+}
+
+export function getKnowledges(params) {
+  return httpProvider({
+    url: !isMock ? '/api/knowledge' : '/api/knowledge',
+    method: 'get',
+    params,
+  });
+}
+export function getSetting(params) {
+  return httpProvider({
+    url: !isMock ? '/api/setting/get' : '/api/settingGet',
+    method: 'get',
+    params,
+  });
+}
+export function getTags(params) {
+  return httpProvider({
+    url: !isMock ? '/api/tag' : '/api/tag',
+    method: 'get',
+    params,
+  });
+}
