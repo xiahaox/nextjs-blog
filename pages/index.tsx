@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { myContext } from '@/context';
 import { Skeleton, Divider, Avatar } from 'antd';
 import Head from 'next/head';
