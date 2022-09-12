@@ -28,6 +28,7 @@
     "pm2": "^5.2.0",
     "pm2-windows-startup": "^1.0.3",
     "react": "18.0.0",
+    "react-countup": "^6.3.0",
     "react-dom": "18.0.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-lazyload": "^3.2.0",

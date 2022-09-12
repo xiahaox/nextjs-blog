@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { ArticleList } from '@/components/ArticleList';
+import CountUp from 'react-countup';
 
 export const CategoryMenu = ({ categories }) => {
   const router = useRouter();
@@ -87,6 +88,25 @@ export default function Home({
               <header>
                 <CategoryMenu categories={categories} />
               </header>
+              <CountUp
+                start={1.09}
+                end={160527.012}
+                duration={2.75}
+                separator=" "
+                decimals={4}
+                decimal=","
+                prefix="EUR "
+                suffix=" left"
+                onEnd={() => console.log('Ended! 👏')}
+                onStart={() => console.log('Started! 💨')}
+              >
+                {({ countUpRef, start }) => (
+                  <div>
+                    <span ref={countUpRef} />
+                    <button onClick={start}>Start</button>
+                  </div>
+                )}
+              </CountUp>
               <main>
                 <InfiniteScroll
                   dataLength={1}
