@@ -14,7 +14,6 @@ export const ListTrail: React.FC<IProps> = ({
   renderItem,
 }) => {
   const [loading, setLoading] = useState(false);
-
   return (
     <>
       {articles.map((item, index) => {

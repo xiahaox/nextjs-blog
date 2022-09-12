@@ -21,6 +21,10 @@ const NAV_LINKS = [
     path: '/knowledge',
     locale: 'knowledgeBooks',
   },
+  {
+    path: '/stopwatch',
+    locale: 'stopwatch',
+  },
 ];
 
 export const Header = ({ setting, tags, pages, hasBg = false }) => {

@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 
 const myContext = React.createContext({});
 
-const initState = {
+let initState = {
   setting: {},
   i18n: {},
   locale: '',
@@ -23,6 +23,7 @@ function reducter(state, action) {
 }
 
 const ContextProvider = (props) => {
+  initState = { ...initState, ...props.store };
   const [state, dispatch] = useReducer(reducter, initState);
   return (
     <myContext.Provider value={{ state, dispatch }}>

@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev:mock": "env-cmd -e dev:mock -f ./.env-cmdrc.json next dev",
+    "dev": "env-cmd -e dev -f ./.env-cmdrc.json next dev",
+    "build": "env-cmd -e prod -f ./.env-cmdrc.json next build",
     "start": "next start",
     "pm2:dev": "pm2 start npm  run  --name client -- start",
     "lint": "next lint"
@@ -19,6 +20,7 @@
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
+    "env-cmd": "^10.1.0",
     "moment": "^2.29.2",
     "next": "12.1.4",
     "next-compose-plugins": "^2.2.1",

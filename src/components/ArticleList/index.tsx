@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import style from './index.module.less';
 import { Divider } from 'antd';
-import LocaleTime from '@/components/ArticleCarousel/LocaleTime';
+import { LocaleTime_1 } from '@/components/LocaleTime';
 import LazyLoad from 'react-lazyload';
 import EyeOutlined from '@ant-design/icons';
 import HeartOutlined from '@ant-design/icons';
-import Image from 'next/image'
+import Image from 'next/image';
 import ShareAltOutlined from '@ant-design/icons';
 
 interface IProps {
@@ -16,8 +16,6 @@ interface IProps {
 }
 
 export const ArticleList: React.FC<IProps> = ({ articles = [] }) => {
-  console.log(articles);
-
   return (
     <div className={style.wrapper}>
       {articles && articles.length ? (
@@ -35,7 +33,7 @@ export const ArticleList: React.FC<IProps> = ({ articles = [] }) => {
                     <div className={style.info}>
                       <Divider type="vertical" />
                       <span className={style.time}>
-                        <LocaleTime date={article.publishAt} timeago={true} />
+                        <LocaleTime_1 date={article.publishAt} timeago={true} />
                       </span>
                       {article.category && (
                         <>
