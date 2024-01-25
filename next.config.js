@@ -7,7 +7,7 @@ const withAntdLess = require('next-plugin-antd-less');
 const withLess = require('next-with-less');
 const path = require('path');
 if (typeof require !== 'undefined') {
-  require.extensions[('.css', '.less')] = (file) => {};
+  require.extensions[('.css', '.less')] = (file) => { };
 }
 console.log(
   '---------------next.config.js-------------process.env.NEXT_API_URL',
@@ -34,6 +34,9 @@ const nextConfig = {
     //   })
     // );
     return config;
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 

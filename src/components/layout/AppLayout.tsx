@@ -2,6 +2,9 @@ import React, { useContext, useMemo, useEffect } from 'react';
 import { BackTop } from 'antd';
 import styles from './index.module.less';
 import { Header } from '../Header';
+// import { ContextProvider } from '@/common';
+import SignModal from '@/common/SignModal'
+// import UploadModal from '@/components/Public/UploadModal'
 
 export const AppLayout: React.FC = ({ children }) => {
   const { setting, pages, tags, customBg } = {
@@ -24,6 +27,8 @@ export const AppLayout: React.FC = ({ children }) => {
       {/* {systemBg && !hasBg && <div className={style.bg} style={{ backgroundImage: bg }}></div>} */}
       <BackTop />
       {/* {needFooter && <Footer setting={setting} hasBg={customBg} />} */}
+      <SignModal />
+
     </div>
   );
 };

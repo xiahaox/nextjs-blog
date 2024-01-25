@@ -13,37 +13,66 @@ import './styles/var.css';
 import './styles/stopwatch.css';
 import { renderToHTML } from 'next/dist/server/render';
 class MyApp extends App<any> {
+  state = {
+    locale: '',
+    user: null,
+  };
   static getInitialProps = async ({ Component, ctx }) => {
     const getPagePropsPromise = Component.getInitialProps
       ? Component.getInitialProps(ctx)
       : Promise.resolve({});
 
-    const [pageProps, setting, tags] = await Promise.all([
+    const [pageProps, setting = {}, tags = {}] = await Promise.all([
       getPagePropsPromise,
-      getSetting(),
-      getTags(),
+      // getSetting(),
+      // getTags(),
     ]);
     return {
-      pageProps,
-      setting,
-      tags,
+      pageProps: {},
+      setting: {},
+      tags: [],
     };
   };
   // const { ca, tags, sysinfo } = { ca: [], tags: [], sysinfo: [] };
+  changeLocale = (key) => {
+    window.localStorage.setItem('locale', key);
+    this.setState({ locale: key });
+  };
+  setUser = (user) => {
+    window.localStorage.setItem('user', JSON.stringify(user));
+    this.setState({ user });
+  };
 
+  removeUser = () => {
+    window.localStorage.setItem('user', '');
+    this.setState({ user: null });
+  };
+  componentDidMount() {
+    const userStr = window.localStorage.getItem('user');
+    if (userStr) {
+      this.setState({ user: JSON.parse(userStr) });
+    }
+  }
   render() {
     const { Component, pageProps, locales, router, tags, setting } = this.props;
+    const { user } = this.state;
     return (
       <>
-        <ContextProvider store={{ tags, setting }}>
+        <ContextProvider store={{
+          tags, setting,
+          user,
+          changeLocale: this.changeLocale,
+          setUser: this.setUser,
+          removeUser: this.removeUser,
+        }}>
           <ConfigProvider locale={zhCN}>
             <AppLayout>
               <Component
                 {...pageProps}
                 // ca={ca ? ca : []}
                 tags={tags ? tags : []}
-                // sysinfo={sysinfo[0] || {}}
-                // router={props.router}
+              // sysinfo={sysinfo[0] || {}}
+              // router={props.router}
               />
             </AppLayout>
           </ConfigProvider>

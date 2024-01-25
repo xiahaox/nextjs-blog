@@ -7,6 +7,7 @@ import { Theme } from '@/components/Theme';
 import style from './index.module.less';
 import { Search } from '@/components/Search';
 import Image from 'next/link';
+import { UserInfo } from '@/components/UserInfo';
 
 const NAV_LINKS = [
   {
@@ -153,9 +154,9 @@ export const Header = ({ setting, tags, pages, hasBg = false }) => {
             <ul>
               {navMenu}
               {pageMenu}
-              {/* <li className={style.toolWrapper}>
-                                <UserInfo />
-                            </li> */}
+              <li className={style.toolWrapper}>
+                <UserInfo />
+              </li>
               <li className={style.toolWrapper}>
                 <SearchOutlined
                   style={{ cursor: 'pointer' }}

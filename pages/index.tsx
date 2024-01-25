@@ -68,12 +68,18 @@ export default function Home({
   // total = 0,
 }) {
   const { state, dispatch } = useContext(myContext);
+  console.log(defaultArticles, "==defaultArticles");
 
   const { setting, tags, categories } = state;
 
   const [page, setPage] = useState(1);
   const [articles, setArticles] = useState(defaultArticles);
   const pageSize = 2;
+
+  useEffect(() => {
+    setArticles(defaultArticles);
+  }, [defaultArticles]);
+
   const getArticles = async (page) => {
     const data = await getArticles_all({ page, pageSize, status: 'publish' });
     setPage(page);
@@ -81,6 +87,7 @@ export default function Home({
       return [...articles, ...data.data[0]];
     });
   };
+  console.log(articles, "==articles");
 
   return (
     <div className={style.wrapper}>
@@ -145,16 +152,16 @@ export default function Home({
 // 服务端预取数据
 
 Home.getInitialProps = async () => {
-  let [recommendedArticles, articles] = await Promise.all([
-    getRecommend(),
-    getArticles_all({ page: 1, pageSize: 2, status: 'publish' }),
+  let [articles] = await Promise.all([
+    // getRecommend(),
+    getArticles_all({ page: 1, pageSize: 2, status: 'publish' })
   ]);
-  recommendedArticles = recommendedArticles.data;
-  articles = articles.data;
+  // recommendedArticles = recommendedArticles.data;
+  const recommendedArticles = articles
+  console.log(articles, "==articles");
   return {
     articles: articles[0],
     total: articles[1],
-    recommendedArticles,
     needLayoutFooter: false,
   };
 };

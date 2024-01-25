@@ -4,7 +4,7 @@ const isMock = process.env.NEXT_API_ENV == 'mock';
 
 export function getArticles_all(parmas) {
   return httpProvider({
-    url: !isMock ? '/api/article/category/all' : '/api/article',
+    url: !isMock ? '/article/list' : '/api/article',
     method: 'get',
     params: parmas,
   });
@@ -54,4 +54,20 @@ export function getTags(params) {
     method: 'get',
     params,
   });
+}
+
+/**
+ * 用户登录
+ * @param data
+ */
+export function login(data) {
+  return httpProvider.post('/auth/login', data);
+}
+
+/**
+ * 用户注册
+ * @param data
+ */
+export function register(data) {
+  return httpProvider.post('/user/register', data);
 }
