@@ -17,6 +17,7 @@ class MyApp extends App<any> {
     locale: '',
     user: null,
   };
+
   static getInitialProps = async ({ Component, ctx }) => {
     const getPagePropsPromise = Component.getInitialProps
       ? Component.getInitialProps(ctx)
@@ -28,9 +29,9 @@ class MyApp extends App<any> {
       // getTags(),
     ]);
     return {
-      pageProps: {},
-      setting: {},
-      tags: [],
+      pageProps,
+      setting,
+      tags,
     };
   };
   // const { ca, tags, sysinfo } = { ca: [], tags: [], sysinfo: [] };
@@ -38,32 +39,32 @@ class MyApp extends App<any> {
     window.localStorage.setItem('locale', key);
     this.setState({ locale: key });
   };
-  setUser = (user) => {
-    window.localStorage.setItem('user', JSON.stringify(user));
-    this.setState({ user });
-  };
+  // setUser = (user) => {
+  //   window.localStorage.setItem('user', JSON.stringify(user));
+  //   this.setState({ user });
+  // };
 
-  removeUser = () => {
-    window.localStorage.setItem('user', '');
-    this.setState({ user: null });
-  };
-  componentDidMount() {
-    const userStr = window.localStorage.getItem('user');
-    if (userStr) {
-      this.setState({ user: JSON.parse(userStr) });
-    }
-  }
+  // removeUser = () => {
+  //   window.localStorage.setItem('user', '');
+  //   this.setState({ user: null });
+  // };
+  // componentDidMount() {
+  //   const userStr = window.localStorage.getItem('user');
+  //   if (userStr) {
+  //     this.setState({ user: JSON.parse(userStr) });
+  //   }
+  // }
   render() {
     const { Component, pageProps, locales, router, tags, setting } = this.props;
-    const { user } = this.state;
+    // const { user } = this.state;
     return (
       <>
         <ContextProvider store={{
           tags, setting,
-          user,
+          // user,
           changeLocale: this.changeLocale,
-          setUser: this.setUser,
-          removeUser: this.removeUser,
+          // setUser: this.setUser,
+          // removeUser: this.removeUser,
         }}>
           <ConfigProvider locale={zhCN}>
             <AppLayout>

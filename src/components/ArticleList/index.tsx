@@ -4,10 +4,10 @@ import style from './index.module.less';
 import { Divider } from 'antd';
 import { LocaleTime_1 } from '@/components/LocaleTime';
 import LazyLoad from 'react-lazyload';
-import EyeOutlined from '@ant-design/icons';
-import HeartOutlined from '@ant-design/icons';
+import { EyeOutlined, MessageOutlined } from '@ant-design/icons';
 import Image from 'next/image';
-import ShareAltOutlined from '@ant-design/icons';
+import { calcCommentsCount } from '@/utils'
+import ArticleTag from './ArticleTag'
 
 interface IProps {
   articles: [];
@@ -33,7 +33,7 @@ export const ArticleList: React.FC<IProps> = ({ articles = [] }) => {
                     <div className={style.info}>
                       <Divider type="vertical" />
                       <span className={style.time}>
-                        <LocaleTime_1 date={article.publishAt} timeago={true} />
+                        <LocaleTime_1 date={article.updatedAt} timeago={true} />
                       </span>
                       {article.category && (
                         <>
@@ -47,18 +47,21 @@ export const ArticleList: React.FC<IProps> = ({ articles = [] }) => {
                   </header>
                   <main>
                     <div className={style.contentWrapper}>
-                      <div className={style.desc}>{article.summary}</div>
+                      <div className={style.desc}>{article.content}</div>
                       <div className={style.meta}>
                         <span>
-                          <HeartOutlined />
-                          <span className={style.number}>{article.likes}</span>
+                          <MessageOutlined />
+                          <span style={{ marginRight: 5 }}> {calcCommentsCount(article.comments || [])}</span>
                         </span>
                         <span className={style.seperator}>·</span>
                         <span>
                           <EyeOutlined />
-                          <span className={style.number}>{article.views}</span>
+                          <span className={style.number}>{article.viewCount}</span>
                         </span>
                         <span className={style.seperator}>·</span>
+                        <span>
+                          <ArticleTag tagList={article.tags} categoryList={article.categories} />
+                        </span>
                         {/* <Share
                             cover={article.cover}
                             title={article.title}

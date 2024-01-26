@@ -76,18 +76,18 @@ export default function Home({
   const [articles, setArticles] = useState(defaultArticles);
   const pageSize = 2;
 
-  useEffect(() => {
-    setArticles(defaultArticles);
-  }, [defaultArticles]);
+  // useEffect(() => {
+  //   setArticles(defaultArticles);
+  // }, [defaultArticles]);
 
   const getArticles = async (page) => {
     const data = await getArticles_all({ page, pageSize, status: 'publish' });
     setPage(page);
     setArticles(() => {
-      return [...articles, ...data.data[0]];
+      return [...articles, ...data.rows];
     });
   };
-  console.log(articles, "==articles");
+  console.log(articles, "==articles---render");
 
   return (
     <div className={style.wrapper}>
@@ -123,8 +123,8 @@ export default function Home({
               </CountUp>
               <main>
                 <InfiniteScroll
-                  dataLength={1}
-                  next={() => getArticles(1)}
+                  dataLength={articles.length}
+                  next={() => getArticles(page + 1)}
                   hasMore={page * pageSize < total}
                   loader={<div className={'loading'} key={0}></div>}
                   endMessage={
@@ -152,16 +152,18 @@ export default function Home({
 // 服务端预取数据
 
 Home.getInitialProps = async () => {
-  let [articles] = await Promise.all([
+  let [data] = await Promise.all([
     // getRecommend(),
     getArticles_all({ page: 1, pageSize: 2, status: 'publish' })
   ]);
   // recommendedArticles = recommendedArticles.data;
-  const recommendedArticles = articles
-  console.log(articles, "==articles");
+  const recommendedArticles = data.rows;
+
   return {
-    articles: articles[0],
-    total: articles[1],
+    articles: data.rows,
+    total: 40,
+    // total: data.count,
     needLayoutFooter: false,
+    recommendedArticles
   };
 };

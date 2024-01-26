@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Form, Icon, Input, Button, Modal } from "antd";
+import React, { useState, useEffect, useContext } from "react";
+import { Form, Icon, Input, Button, Modal, message } from "antd";
 // import { useLocation } from "react-router-dom";
-
+import { login, register } from "@/request/api";
+import { myContext } from "@/context";
 // import { GITHUB } from '@/config'
 // import { save } from "@/utils/storage";
 
@@ -33,13 +34,11 @@ function FormItem(props) {
 }
 
 function SignModal(props) {
-  // const dispatch = useDispatch() // dispatch hooks
-  // const location = useLocation(); // location
   const { emit, on } = useEventBus();
+  const { state, dispatch } = useContext(myContext);
   const [visible, setVisible] = useState(false);
   const [type, setType] = useState("login");
   const [form] = Form.useForm();
-  const { getFieldDecorator } = form;
 
   on("openSignModal", (type) => {
     form.resetFields();
@@ -47,15 +46,26 @@ function SignModal(props) {
     setVisible(true);
   });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    form.validateFieldsAndScroll((errors, values) => {
-      if (errors) return;
-      // const action = type === 'login' ? login : register
-      // dispatch(action(values)).then(() => {
-      //   setVisible(false) // type =  login | register
-      // })
-    });
+  function onFinish(values) {
+    const action = type === "login" ? login : register;
+    action(values)
+      .then((res) => {
+        console.log(res, "==res");
+        if (type === "login") {
+          dispatch({
+            type: "USER_LOGIN",
+            payload: res,
+          });
+          message.success(`登录成功, 欢迎您 ${res.username}`);
+        }
+        if (type === "register") {
+          message.success("注册成功，请重新登录您的账号！");
+        }
+        setVisible(false);
+      })
+      .catch((err) => {
+        console.log(err, "err======");
+      });
   }
 
   // function githubLogin() {
@@ -82,7 +92,12 @@ function SignModal(props) {
       onCancel={(e) => setVisible(false)}
       footer={null}
     >
-      <Form layout="horizontal" form={form}>
+      <Form
+        layout="horizontal"
+        onFinish={onFinish}
+        form={form}
+        scrollToFirstError
+      >
         {type === "login" ? (
           <>
             <FormItem
@@ -137,10 +152,11 @@ function SignModal(props) {
             ></FormItem>
           </>
         )}
+        <Button type="primary" block htmlType="submit">
+          {type}
+        </Button>
       </Form>
-      <Button type="primary" block onClick={handleSubmit}>
-        {type}
-      </Button>
+
       {/* {GITHUB.enable && (
         <Button block icon='github' onClick={githubLogin} style={{ marginTop: 10 }}>
           github login

@@ -16,8 +16,9 @@ httpProvider.interceptors.request.use(
     return config;
   },
 
-  () => {
-    throw new Error('发起请求出错');
+  error => {
+    message.error('bed request')
+    Promise.reject(error)
   }
 );
 httpProvider.interceptors.response.use(
@@ -34,21 +35,22 @@ httpProvider.interceptors.response.use(
     return res;
   },
   (err) => {
-    if (err && err.response && err.response.status) {
-      const status = err.response.status;
-
+    console.log(err,"==err");
+    console.log(err.response);
+    
+    if (err.response) {
+      const { status, data } = err.response
       switch (status) {
-        case 504:
-        case 404:
-          typeof window !== 'undefined' && message.error('服务器异常');
-          break;
+        case 401:
+          message.error((data && data.message) || '登录信息过期或未授权，请重新登录！')
+          break
 
         default:
-          typeof window !== 'undefined' &&
-            message.error(
-              (err.response && err.response.data && err.response.data.msg) || '未知错误!'
-            );
+          message.error(data.message || data.err ||`连接错误 ${status}！`)
+          break
       }
+    } else {
+      message.error(err.message)
     }
 
     return Promise.reject(err);

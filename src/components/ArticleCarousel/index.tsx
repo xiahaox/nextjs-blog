@@ -10,9 +10,9 @@ interface IProps {
 export const ArticleCarousel: React.FC<any> = ({ articles = [] }) => {
   return articles && articles.length ? (
     <div className={style.wrapper}>
-      <Carousel autoplay={true}>
+      <Carousel autoplay={true} infinite={true}>
         {(articles || [])
-          .filter((article) => article.cover)
+          .filter((article) => article.id)
           .slice(0, 6)
           .map((article) => {
             return (
@@ -32,13 +32,13 @@ export const ArticleCarousel: React.FC<any> = ({ articles = [] }) => {
                         <p>
                           <span>
                             <LocaleTime_1
-                              date={article.publishAt}
+                              date={article.updatedAt}
                               timeago={true}
                             />
                           </span>
                           <span className={style.seperator}>·</span>
                           <span>
-                            {article.views} {'次阅读'}
+                            {article.viewCount} {'次阅读'}
                           </span>
                         </p>
                       </div>

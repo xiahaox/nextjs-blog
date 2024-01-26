@@ -61,7 +61,7 @@ export function getTags(params) {
  * @param data
  */
 export function login(data) {
-  return httpProvider.post('/auth/login', data);
+  return httpProvider.post('/login', data);
 }
 
 /**
@@ -69,5 +69,5 @@ export function login(data) {
  * @param data
  */
 export function register(data) {
-  return httpProvider.post('/user/register', data);
+  return httpProvider.post('/register', data);
 }

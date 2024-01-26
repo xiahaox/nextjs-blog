@@ -1,6 +1,11 @@
 import React, { useReducer } from 'react';
+import { save, get, remove } from '@/utils/storage'
 
 const myContext = React.createContext({});
+const userStr = get('userInfo');
+
+
+// typeof window !== 'undefined' ? window.localStorage.getItem('user') : '{}';
 
 let initState = {
   setting: {},
@@ -10,13 +15,22 @@ let initState = {
   pages: [],
   categories: [],
   tags: [],
-  changeLocale: () => {},
-  user: null,
-  setUser: () => {},
-  removeUser: () => {},
+  changeLocale: () => { },
+  user: userStr ? userStr : {},
+  setUser: () => { },
+  removeUser: () => { },
 };
 function reducter(state, action) {
-  switch (action.type) {
+  const { type, payload } = action
+  switch (type) {
+    case 'USER_LOGIN':
+      const { username, userId, role, github = null, token } = payload;
+      save('userInfo', { username, userId, role, github, token })
+      return { ...state, user: { username, userId, role, github } }
+
+    case 'USER_LOGIN_OUT':
+      remove('userInfo')
+      return { ...state, user: { username: '', userId: 0, role: 2, github: null } }
     default:
       return state;
   }
