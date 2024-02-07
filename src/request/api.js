@@ -9,7 +9,20 @@ export function getArticles_all(parmas) {
     params: parmas,
   });
 }
-
+export function getTagList(parmas) {
+  return httpProvider({
+    url: !isMock ? '/tag/list' : '/tag/list',
+    method: 'get',
+    params: parmas,
+  });
+}
+export function getCategoryList(parmas) {
+  return httpProvider({
+    url: !isMock ? '/category/list' : '/category/list',
+    method: 'get',
+    params: parmas,
+  });
+}
 export function getRecommend(params) {
   return httpProvider({
     url: !isMock ? '/api/article/recommend' : '/api/recommend',

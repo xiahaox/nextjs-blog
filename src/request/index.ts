@@ -35,9 +35,6 @@ httpProvider.interceptors.response.use(
     return res;
   },
   (err) => {
-    console.log(err,"==err");
-    console.log(err.response);
-    
     if (err.response) {
       const { status, data } = err.response
       switch (status) {

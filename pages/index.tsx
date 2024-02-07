@@ -1,13 +1,14 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { myContext } from '@/context';
 import { Skeleton, Divider, Avatar } from 'antd';
-import Head from 'next/head';
+// import Head from 'next/head';
 import cls from 'classnames';
+import { Tags } from '@/components/Tags';
 import Image from 'next/image';
 import { DoubleColumnLayout } from '@/components/DoubleColumnLayout';
 import style from './index.module.less';
 import { ArticleCarousel } from '@/components/ArticleCarousel';
-import { getArticles_all, getRecommend } from '@/request/api';
+import { getArticles_all, getTagList, getCategoryList } from '@/request/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -17,21 +18,19 @@ import CountUp from 'react-countup';
 
 export const CategoryMenu = ({ categories }) => {
   const router = useRouter();
-  console.log('router', router);
 
   const { asPath } = router;
-
   return (
     <>
       {[
         {
-          label: '所有',
+          name: '所有',
           path: '/',
+          count: 1
         },
         ...categories,
       ].map((category, index) => {
-        console.log(category, index);
-
+        category.path = '/' + category?.name
         return (
           <Link
             key={index}
@@ -39,7 +38,7 @@ export const CategoryMenu = ({ categories }) => {
               ? { href: '/' }
               : {
                 href: '/category/[category]',
-                as: `/category/` + category.value,
+                as: `/category/` + category.name,
               })}
             shallow={false}
           >
@@ -48,11 +47,11 @@ export const CategoryMenu = ({ categories }) => {
                 [style.active]:
                   index === 0
                     ? asPath === category.path
-                    : asPath.replace('/category/', '') === category.value,
+                    : asPath.replace('/category/', '') === category.name,
               })}
-              aria-label={category.label}
+              aria-label={category.name}
             >
-              <span>{category.label}</span>
+              <span>{category.name}</span>
             </a>
           </Link>
         );
@@ -64,11 +63,10 @@ export const CategoryMenu = ({ categories }) => {
 export default function Home({
   articles: defaultArticles = [],
   recommendedArticles = [],
+  categoryList, tagList,
   total = 0,
-  // total = 0,
 }) {
   const { state, dispatch } = useContext(myContext);
-  console.log(defaultArticles, "==defaultArticles");
 
   const { setting, tags, categories } = state;
 
@@ -87,7 +85,6 @@ export default function Home({
       return [...articles, ...data.rows];
     });
   };
-  console.log(articles, "==articles---render");
 
   return (
     <div className={style.wrapper}>
@@ -100,7 +97,7 @@ export default function Home({
             </div>
             <div className={style.leftWrap}>
               <header>
-                <CategoryMenu categories={categories} />
+                <CategoryMenu categories={categoryList} />
               </header>
               <CountUp
                 start={1.09}
@@ -141,7 +138,7 @@ export default function Home({
         rightNode={
           <div className="sticky">
             <ArticleRecommend mode="inline" articles={recommendedArticles} />
-            {/* <Tags tags={tags} /> */}
+            <Tags tags={tagList} />
             {/* <Footer className={style.footer} setting={setting} /> */}
           </div>
         }
@@ -152,17 +149,19 @@ export default function Home({
 // 服务端预取数据
 
 Home.getInitialProps = async () => {
-  let [data] = await Promise.all([
-    // getRecommend(),
-    getArticles_all({ page: 1, pageSize: 2, status: 'publish' })
+  let [data, categoryList, tagList] = await Promise.all([
+    getArticles_all({ page: 1, pageSize: 2, status: 'publish' }),
+    getCategoryList(),
+    getTagList()
   ]);
   // recommendedArticles = recommendedArticles.data;
   const recommendedArticles = data.rows;
-
   return {
     articles: data.rows,
     total: 40,
     // total: data.count,
+    categoryList: categoryList,
+    tagList: tagList,
     needLayoutFooter: false,
     recommendedArticles
   };
