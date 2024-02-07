@@ -12,20 +12,20 @@ import { UserInfo } from '@/components/UserInfo';
 const NAV_LINKS = [
   {
     path: '/',
-    locale: 'article',
+    locale: '文章',
   },
-  {
-    path: '/archives',
-    locale: 'archives',
-  },
-  {
-    path: '/knowledge',
-    locale: 'knowledgeBooks',
-  },
-  {
-    path: '/stopwatch',
-    locale: 'stopwatch',
-  },
+  // {
+  //   path: '/archives',
+  //   locale: 'archives',
+  // },
+  // {
+  //   path: '/knowledge',
+  //   locale: 'knowledgeBooks',
+  // },
+  // {
+  //   path: '/stopwatch',
+  //   locale: 'stopwatch',
+  // },
 ];
 
 export const Header = ({ setting, tags, pages, hasBg = false }) => {

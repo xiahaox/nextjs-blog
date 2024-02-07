@@ -1,9 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { Spin } from 'antd';
-import style from './index.module.less';
 import { LocaleTime_1 } from '@/components/LocaleTime';
-
+import style from './index.module.less';
 interface IProps {
   // articleId?: string;
   mode?: 'inline' | 'vertical';
@@ -16,12 +15,10 @@ export const ArticleRecommend: React.FC<IProps> = ({
   mode = 'vertical',
   needTitle = true,
 }) => {
-  // console.log(articles);
   const [articless, setArticless] = useState(articles.slice(0, 6));
-  console.log(articless);
   const loading = false;
   return (
-    <div className={(style.wrapper, mode === 'inline' && style.inline)}>
+    <div className={style.wrapper} >
       {needTitle && (
         <div className={style.title}>
           <span>{'推荐阅读'}</span>
@@ -67,11 +64,11 @@ export const ArticleRecommend: React.FC<IProps> = ({
             </ul>
           )
         ) : // <ArticleList
-        //   articles={articles || []}
-        //   coverHeight={110}
-        //   asRecommend={true}
-        // />
-        null}
+          //   articles={articles || []}
+          //   coverHeight={110}
+          //   asRecommend={true}
+          // />
+          null}
       </Spin>
     </div>
   );

@@ -155,7 +155,6 @@ Home.getInitialProps = async () => {
     getTagList()
   ]);
   // recommendedArticles = recommendedArticles.data;
-  const recommendedArticles = data.rows;
   return {
     articles: data.rows,
     total: 40,
@@ -163,6 +162,6 @@ Home.getInitialProps = async () => {
     categoryList: categoryList,
     tagList: tagList,
     needLayoutFooter: false,
-    recommendedArticles
+    recommendedArticles: data.rows
   };
 };
