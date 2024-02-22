@@ -53,7 +53,13 @@ const nextConfig = {
 // )
 module.exports = withPlugins(
   [
-    [withLess],
+    [withLess,
+      {
+        lessLoaderOptions: {
+          javascriptEnabled: true,
+        },
+      }
+    ],
     [
       withAntdLess,
       {

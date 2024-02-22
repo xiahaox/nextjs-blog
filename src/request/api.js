@@ -68,6 +68,17 @@ export function getTags(params) {
     params,
   });
 }
+/**
+ * 获取指定文章
+ * @param id
+ */
+
+export function getArticle(id) {
+  return httpProvider({
+    url: !isMock ? `/article/${id}` : `/article/${id}`,
+    method: 'get',
+  });
+}
 
 /**
  * 用户登录
@@ -83,4 +94,13 @@ export function login(data) {
  */
 export function register(data) {
   return httpProvider.post('/register', data);
+}
+
+export function discuss(data) {
+  return httpProvider.post('/discuss', data);
+}
+
+
+export function discussDelect(data) {
+  return httpProvider.post(`/discuss/comment/${data.commentId}`);
 }

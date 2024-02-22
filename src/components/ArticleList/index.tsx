@@ -51,7 +51,7 @@ export const ArticleList: React.FC<IProps> = ({ articles = [] }) => {
                       <div className={style.meta}>
                         <span>
                           <MessageOutlined />
-                          <span style={{ marginRight: 5 }}> {calcCommentsCount(article.comments || [])}</span>
+                          <span style={{ marginRight: 5 }}> {article?.comments?.length || 0}</span>
                         </span>
                         <span className={style.seperator}>·</span>
                         <span>

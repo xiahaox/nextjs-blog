@@ -11,6 +11,7 @@ import './styles/antd.css';
 import './styles/reset.css';
 import './styles/var.css';
 import './styles/stopwatch.css';
+import './styles/discuss.css';
 import { renderToHTML } from 'next/dist/server/render';
 class MyApp extends App<any> {
   state = {
